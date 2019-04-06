@@ -22,6 +22,7 @@ namespace chen
 		ETC_Week = 7 * ETC_Day,			// 周, 单位s
 	};
 
+	static const int ASCII_DATETIME_LEN = 20; //2016-04-24 14:06:59
 }  // namespace chen
 
 #endif //_C_TIME_CONST_H

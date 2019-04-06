@@ -93,6 +93,48 @@ namespace chen
 			get_tm(out);
 			return out;
 		}
+		
+		
+		// yyyy-MM-dd HH:mm:ss
+		int time64_datetime_format(const tm& now_tm, char* out, char date_conn, char datetime_conn, char time_conn)
+		{
+			int nCount = 0;
+			
+			if (date_conn > 0)
+			{
+				nCount += sprintf(out + nCount, "%04d%c%02d%c%02d", now_tm.tm_year + 1900, date_conn
+					, now_tm.tm_mon + 1, date_conn, now_tm.tm_mday);
+			}
+			else if(date_conn == 0)
+			{
+				nCount += sprintf(out + nCount, "%04d%02d%02d", now_tm.tm_year + 1900, now_tm.tm_mon + 1
+					, now_tm.tm_mday);
+			}
+
+			if (datetime_conn > 0)
+			{
+				out[nCount] = datetime_conn;
+				++nCount;
+				out[nCount] = '\0';
+			}
+
+			if (time_conn > 0)
+			{
+				nCount += sprintf(out + nCount, "%02d%c%02d%c%02d", now_tm.tm_hour, time_conn
+					, now_tm.tm_min, time_conn, now_tm.tm_sec);
+			}
+			else if (time_conn == 0)
+			{
+				nCount += sprintf(out + nCount, "%02d%02d%02d", now_tm.tm_hour, now_tm.tm_min, now_tm.tm_sec);
+			}
+			return nCount;
+		}
+		int time64_datetime_format(time_t time, char* out, char date_conn, char datetime_conn, char time_conn)
+		{
+			tm now_tm;
+			time_t_to_tm(time, now_tm);
+			return time64_datetime_format(now_tm, out, date_conn, datetime_conn, time_conn);
+		}
 	}
 	
 }

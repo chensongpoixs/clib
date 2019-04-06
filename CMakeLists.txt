@@ -16,9 +16,9 @@ ${PROJECT_SOURCE_DIR}/cutil
 
 file(GLOB_RECURSE ALL_CXX_SRCS
 ./cnet/*.cpp
-./ctime/*cpp 
-./clog/*cpp 
-./cutil/*cpp 
+./ctime/*.cpp 
+./clog/*.cpp 
+./cutil/*.cpp 
 )
 
 add_library(${PROJECT_NAME} STATIC ${ALL_CXX_SRCS} )

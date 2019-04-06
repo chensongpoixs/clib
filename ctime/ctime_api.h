@@ -28,6 +28,11 @@ namespace chen
 		tm get_tm();
 
 		time_t tm_to_time_t(const tm& _tm);
+	   
+		// yyyy-MM-dd HH:mm:ss
+		int time64_datetime_format(const tm& now_tm, char* out, char date_conn, char datetime_conn, char time_conn);
+		 //chen::ctime_base_api::time64_datetime_format(::time(NULL), buf, '-', ' ', ':');
+		int time64_datetime_format(time_t time, char* out, char date_conn, char datetime_conn, char time_conn);
 	}  // namespace ctime_base_api
 }  // namespace chen 
 
