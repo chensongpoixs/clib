@@ -22,9 +22,9 @@ namespace chen {
 
 	bool cconfig::init(int64 values_count, const char * file_name)
 	{
-		if (max_num < 1 || !file_name )
+		if (values_count < 1 || !file_name )
 		{
-			ERROR_EX_LOG(" m_config max num = %ld, cfg file ptr= NULL \n", max_num);
+			ERROR_EX_LOG(" m_config max values_count = %ld, cfg file ptr= NULL \n", values_count);
 			return false;
 		}
 
@@ -32,15 +32,15 @@ namespace chen {
 		{
 			return false;
 		}
-		m_configs = new cnode[max_num];
+		m_configs = new cnode[values_count];
 		if (!m_configs)
 		{
-			ERROR_EX_LOG("alloc m_config max num = %lu\n", max_num);
+			ERROR_EX_LOG("alloc m_config max values_count = %lu\n", values_count);
 			return false;
 		}
 		
 
-		m_values_size = max_num;
+		m_values_size = values_count;
 		return true;
 	}
 
