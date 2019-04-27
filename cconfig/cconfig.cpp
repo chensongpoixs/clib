@@ -1,9 +1,9 @@
 /***********************************************************************************************
-created: 		2019-04-27
+					created: 		2019-04-27
 
-author:			chensong
+					author:			chensong
 
-purpose:		config
+					purpose:		config
 ************************************************************************************************/
 #include "cconfig.h"
 #include <fstream>
@@ -20,7 +20,7 @@ namespace chen {
 	{
 	}
 
-	bool cconfig::init(int64 max_num, const char * file_name)
+	bool cconfig::init(int64 values_count, const char * file_name)
 	{
 		if (max_num < 1 || !file_name )
 		{
@@ -46,102 +46,110 @@ namespace chen {
 
 	void cconfig::destroy()
 	{
+		
+		if (m_configs)
+		{
+			delete[] m_configs;
+			m_configs = NULL;
+		}
+
+		m_values_size = 0;
 	}
 
-	void cconfig::set_string(int64 key_num,const std::string key, std::string value)
+	void cconfig::set_string(int64 index,const std::string key, std::string value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_string max_num = %ld, num = %ld, key = %s, value = %s\n", m_values_size, key_num, key.c_str(), value.c_str());
+			ERROR_EX_LOG("set_string index = %ld, num = %ld, key = %s, value = %s\n", m_values_size, index, key.c_str(), value.c_str());
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_data = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_data = value;
 	}
 
-	void cconfig::set_int32(int64 key_num, const std::string key, int32 value)
+	void cconfig::set_int32(int64 index, const std::string key, int32 value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_int32 max_num = %ld, num = %ld, key = %s, value = %d\n", m_values_size, key_num, key.c_str(), value);
+			ERROR_EX_LOG("set_int32 index = %ld, num = %ld, key = %s, value = %d\n", m_values_size, index, key.c_str(), value);
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_int32 = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_int32 = index;
 	}
 
-	void cconfig::set_uint32(int64 key_num, const std::string key, uint32 value)
+	void cconfig::set_uint32(int64 index, const std::string key, uint32 value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_uint32 max_num = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, key_num, key.c_str(), value);
+			ERROR_EX_LOG("set_uint32 index = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, index, key.c_str(), value);
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_uint32 = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_uint32 = value;
 	}
 
-	void cconfig::set_string(int64 key_num, int32, const char * key, const char * value)
+	void cconfig::set_string(int64 index, int32, const char * key, const char * value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_string max_num = %ld, num = %ld, key = %s, value = %s\n", m_values_size, key_num, key, value);
+			ERROR_EX_LOG("set_string index = %ld, num = %ld, key = %s, value = %s\n", m_values_size, index, key, value);
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_data = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_data = value;
 	}
 
-	void cconfig::set_int32(int64 key_num, const char * key, int32 value)
+	void cconfig::set_int32(int64 index, const char * key, int32 value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_int32 max_num = %ld, num = %ld, key = %s, value = %d\n", m_values_size, key_num, key, value);
+			ERROR_EX_LOG("set_int32 max_num = %ld, num = %ld, key = %s, value = %d\n", m_values_size, index, key, value);
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_int32 = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_int32 = value;
 	}
 
-	void cconfig::set_uint32(int64 key_num, const char * key, uint32 value)
+	void cconfig::set_uint32(int64 index, const char * key, uint32 value)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("set_uint32 max_num = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, key_num, key, value);
+			ERROR_EX_LOG("set_uint32 index = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, index, key, value);
 			return;
 		}
-		m_configs[key_num].init(key, EDataTypeString);
-		m_configs[key_num].m_uint32 = value;
+		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].m_uint32 = value;
 	}
 
-	std::string cconfig::get_string(int64 key_num)
+	std::string cconfig::get_string(int64 index)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("get_string max_num = %ld, num = %ld\n", m_values_size, key_num);
+			ERROR_EX_LOG("get_string index = %ld, num = %ld\n", m_values_size, index);
 			return "";
 		}
-		return m_configs[key_num].m_data;
+		return m_configs[index].m_data;
 	}
 
-	int32 cconfig::get_int32(int64 key_num)
+	int32 cconfig::get_int32(int64 index)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("get_int32 max_num = %ld, num = %ld\n", m_values_size, key_num);
+			ERROR_EX_LOG("get_int32 index = %ld, num = %ld\n", m_values_size, index);
 			return 0;
 		}
-		return m_configs[key_num].m_int32;
+		return m_configs[index].m_int32;
 	}
 
-	uint32 cconfig::get_uint32(int64 key_num)
+	uint32 cconfig::get_uint32(int64 index)
 	{
-		if (m_values_size < key_num)
+		if (m_values_size < index)
 		{
-			ERROR_EX_LOG("get_int32 max_num = %ld, num = %ld\n", m_values_size, key_num);
+			ERROR_EX_LOG("get_int32 index = %ld, num = %ld\n", m_values_size, index);
 			return 0;
 		}
-		return m_configs[key_num].m_uint32;
+		return m_configs[index].m_uint32;
 	}
 
 	void cconfig::load_cfg_file()
@@ -198,7 +206,7 @@ namespace chen {
 			if (_parser_line(line, key, value))
 			{
 				_insert_data(key, value);
-				//m_configs[1].m_data = value; // ±£¥ÊµΩmap»›∆˜÷–µƒ∑Ω∑®°£
+				//m_configs[1].m_data = value; // ‰øùÂ≠òÂà∞mapÂÆπÂô®‰∏≠ÁöÑÊñπÊ≥ï„ÄÇ
 			}
 		}
 		if (input)
@@ -230,20 +238,20 @@ namespace chen {
 			end_pos = pos - 1;
 		}
 
-		std::string new_line = line.substr(start_pos, end_pos - start_pos + 1); // …æµÙ∫Û∞Î≤ø∑÷µƒ◊¢ Õ FIX_ME£∫ ’‚¿Ô”¶∏√ «ºı¥Ì¡À∞…
-																				// œ¬√Êposµƒ∏≥÷µ ±±ÿ“™µƒ£¨’‚—˘£¨æÕø…‘⁄∫Û√Êµ√µΩKey∫Õvalue÷µ¡À°£
-		if ((pos = new_line.find("=")) == std::string::npos) //Àµ√˜«∞√Ê√ª”– = ∫≈
+		std::string new_line = line.substr(start_pos, end_pos - start_pos + 1); // Âà†ÊéâÂêéÂçäÈÉ®ÂàÜÁöÑÊ≥®Èáä FIX_MEÔºö ËøôÈáåÂ∫îËØ•ÊòØÂáèÈîô‰∫ÜÂêß
+																				// ‰∏ãÈù¢posÁöÑËµãÂÄºÊó∂ÂøÖË¶ÅÁöÑÔºåËøôÊ†∑ÔºåÂ∞±ÂèØÂú®ÂêéÈù¢ÂæóÂà∞KeyÂíåvalueÂÄº‰∫Ü„ÄÇ
+		if ((pos = new_line.find("=")) == std::string::npos) //ËØ¥ÊòéÂâçÈù¢Ê≤°Êúâ = Âè∑
 		{
 			return false;
 		}
-		key = new_line.substr(0, pos); // ªÒµ√key
-		value = new_line.substr(pos + 1, end_pos + 1 - (pos + 1)); // ªÒµ√value
+		key = new_line.substr(0, pos); // Ëé∑Âæókey
+		value = new_line.substr(pos + 1, end_pos + 1 - (pos + 1)); // Ëé∑Âæóvalue
 		_trim(key);
 		if (key.empty())
 		{
 			return false;
 		}
-		_trim(value); // “ÚŒ™’‚¿Ôµƒkey∫Õvalue∂º «“˝”√¥´µ›£¨ø…“‘÷±Ω”±ª–ﬁ∏ƒ£¨À˘“‘≤ª”√∑µªÿ
+		_trim(value); // Âõ†‰∏∫ËøôÈáåÁöÑkeyÂíåvalueÈÉΩÊòØÂºïÁî®‰º†ÈÄíÔºåÂèØ‰ª•Áõ¥Êé•Ë¢´‰øÆÊîπÔºåÊâÄ‰ª•‰∏çÁî®ËøîÂõû
 		return true;
 	}
 
@@ -293,7 +301,7 @@ namespace chen {
 			str = "";
 			return;
 		}
-		start_pos = i; // ªÒ»°µΩ∑«ø’∏Òµƒ≥ı ºŒª÷√
+		start_pos = i; // Ëé∑ÂèñÂà∞ÈùûÁ©∫Ê†ºÁöÑÂàùÂßã‰ΩçÁΩÆ
 
 		for (i = str.size() - 1; i >= 0; i--)
 		{
@@ -320,7 +328,7 @@ namespace chen {
 
 	std::string  ccfg_file::get_value(const std::string & key)
 	{
-		// TODO: ‘⁄¥À¥¶≤Â»Î return ”Ôæ‰
+		// TODO: Âú®Ê≠§Â§ÑÊèíÂÖ• return ËØ≠Âè•
 		CCONFIG_MAP::const_iterator iter = m_config_map.find(key);
 		if (iter != m_config_map.end())
 		{

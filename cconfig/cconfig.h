@@ -1,9 +1,9 @@
 /***********************************************************************************************
-		created: 		2019-04-27
+				created: 		2019-04-27
 
-		author:			chensong
+				author:			chensong
 
-		purpose:		config
+				purpose:		config
 ************************************************************************************************/
 #ifndef _C_CONFIG_H_
 #define _C_CONFIG_H_
@@ -47,21 +47,21 @@ namespace chen {
 		virtual ~cconfig();
 
 	public:
-	    virtual	bool init(int64 max_num, const char * file_name);
+	    virtual	bool init(int64 values_count, const char * file_name);
 		virtual void destroy();
 	public:
-		virtual void set_string(int64 key_num , const std::string key, std::string value);
-		virtual void set_int32(int64 key_num, const std::string key, int32 value);
-		virtual void set_uint32(int64 key_num, const std::string key, uint32 value);
-		virtual void set_string(int64 key_num, int32, const char * key, const char * value);
-		virtual void set_int32(int64 key_num, const char * key, int32 value);
-		virtual void set_uint32(int64 key_num, const char * key, uint32 value);
+		virtual void set_string(int64 index , const std::string key, std::string value);
+		virtual void set_int32(int64 index, const std::string key, int32 value);
+		virtual void set_uint32(int64 index, const std::string key, uint32 value);
+		virtual void set_string(int64 index, int32, const char * key, const char * value);
+		virtual void set_int32(int64 index, const char * key, int32 value);
+		virtual void set_uint32(int64 index, const char * key, uint32 value);
 
 
 	public:
-		virtual std::string get_string(int64 key_num);
-		virtual int32 get_int32(int64 key_num);
-		virtual uint32 get_uint32(int64 key_num);
+		virtual std::string get_string(int64 index);
+		virtual int32 get_int32(int64 index);
+		virtual uint32 get_uint32(int64 index);
 	public:
 		virtual void load_cfg_file();
 	private:
@@ -98,7 +98,7 @@ namespace chen {
 		}cnode;
 
 		cnode*			m_configs;
-		int32           m_values_size;
+		int64           m_values_size;
 		ccfg_file		m_cfg_file;
 	};
 }//namespace chen
