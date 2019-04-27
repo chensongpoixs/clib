@@ -8,17 +8,19 @@ ADD_DEFINITIONS(-std=c++11 -g -Wall )
 
 
 INCLUDE_DIRECTORIES(
-${PROJECT_SOURCE_DIR}/cnet
-${PROJECT_SOURCE_DIR}/ctime
-${PROJECT_SOURCE_DIR}/clog
-${PROJECT_SOURCE_DIR}/cutil
+				${PROJECT_SOURCE_DIR}/cnet
+				${PROJECT_SOURCE_DIR}/ctime
+				${PROJECT_SOURCE_DIR}/clog
+				${PROJECT_SOURCE_DIR}/cutil
+				${PROJECT_SOURCE_DIR}/cconfig
 )
 
 file(GLOB_RECURSE ALL_CXX_SRCS
-./cnet/*.cpp
-./ctime/*.cpp 
-./clog/*.cpp 
-./cutil/*.cpp 
+							./cnet/*.cpp
+							./ctime/*.cpp 
+							./clog/*.cpp 
+							./cutil/*.cpp 
+							./cconfig/*.cpp 
 )
 
 add_library(${PROJECT_NAME} STATIC ${ALL_CXX_SRCS} )
