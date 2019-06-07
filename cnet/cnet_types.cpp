@@ -1,9 +1,15 @@
-#include "cnet_type.h"
-#include <cassert>
+/***********************************************************************************************
+	created: 		2019-03-01
+	
+	author:			chensong
+					
+	purpose:		net_types
+************************************************************************************************/
+#include "cnet_types.h"
 
-namespace chen
+namespace chen 
 {
-	inline void check_net_type_size()
+	inline void check_socket_types_size()
 	{
 		static_assert(sizeof(int8) == 1, "sizeof(int8) != 1");
 		static_assert(sizeof(uint8) == 1, "sizeof(uint8) != 1");
@@ -14,4 +20,4 @@ namespace chen
 		static_assert(sizeof(int64) == 8, "sizeof(int64) != 8");
 		static_assert(sizeof(uint64) == 8, "sizeof(uint64) != 8");
 	}	
-}
+}  // chen
