@@ -54,11 +54,27 @@ namespace chen {
 		static cnet_mgr *	construct();
 		static void			destroy(cnet_mgr * p);
 	public:
+		/**
+		* @param name: 服务的名称
+		* @param client_session:   作为客户端是转入 大于0 
+		* @param max_session : 作为服务端 是输入大于0
+		* @param send_buff_size: 发送缓冲区的大小
+		* @param recv_buff_size: 接收缓冲区的大小
+		*
+		**/
 		bool 		init(const std::string& name, uint32 client_session, uint32 max_session
 			, uint32 send_buff_size, uint32 recv_buff_size);
+		/************************************************************************/
+		/* 关服操作                                                                   */
+		/************************************************************************/
 		void 		shutdown();
 		void 		destroy();
 	public:
+		/**
+		*  @param  thread_num io线程数
+		*  @param  ip  
+		*  @param  port   
+		**/
 		bool 		startup(uint32 thread_num, const char *ip, uint16 port);
 	public:
 		//消息id秘钥
@@ -94,12 +110,21 @@ namespace chen {
 		//void set_reconnection(uint32 msleep);
 	public:
 		void 		process_msg();
+		/**
+		*  @param  sessionId : 回话id
+		*  @param  msg_id    : 消息id
+		*  @param  msg_ptr   : 消息的数据
+		*  @param  msg_size  : 消息的大小
+		**/
 		bool 		send_msg(uint32 sessionId, uint16 msg_id, const void* msg_ptr, uint32 msg_size);
 
 		// 指定服务器发送
 		bool 		send_msg(uint32 sessionId, uint16 msg_id, const void* msg_ptr, uint32 msg_size, int32 extra);
+		/**
+		*  @param sessionId  : 关闭指定的回话id
+		**/
 		void 		close(uint32 sessionId);
-
+		// 连接客户端的数量和数据 信息  
 		void		show_info();
 	public:
 		/*
@@ -109,14 +134,21 @@ namespace chen {
 	
 	private:
 		void 		_work_thread();
+		/**
+		* @param  psession : 清除指定得到session
+		**/
 		void		_clearup_session(cnet_session * psession);
+
+		// 得到一个新的客户端连接
 		void		_new_connect();
 	private:
 		// server api
+		// 服务器异步监听是否有新的客户端连接
 		void		_listen_start(const char *ip, uint16 port);
 
 	private:
 		// client api
+		// 同步连接服务器
 		bool		_connect_start(uint32 index, const char *ip, uint16 port);
 	private:
 		// 取得一个可用的会话
@@ -127,7 +159,7 @@ namespace chen {
 	private: 	
 		std::string						m_name;
 		cacceptor*						m_acceptor_ptr;		// 监听socket
-		creactor*						m_reactor;
+		creactor*						m_reactor;          // 反应堆
 		// callback			
 		cconnect_cb						m_connect_callback;
 		cdisconnect_cb					m_disconnect_callback;
@@ -136,13 +168,13 @@ namespace chen {
 		clock_type						m_avail_session_mutex;
 		csessions						m_available_sessions;     //开使用的会话
 		catomic_bool					m_shuting;
-		cthreads 						m_threads;
-		std::queue<cnet_msg*>			m_msgs;
+		cthreads 						m_threads;    
+		std::queue<cnet_msg*>			m_msgs;   
 		//config
 		uint16							m_msg_id_key;
 		uint32							m_msg_size_key;
 		uint32							m_max_received_msg_size;
-		bool							m_wan;
+		bool							m_wan;  //是否是网关
 
 		//client
 		uint32							m_reconnect_second;

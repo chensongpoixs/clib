@@ -53,10 +53,18 @@ namespace chen {
 		
 	public:
 		// register
+		/**
+		*  @param  descriptor	:  注册读取文件描述符到select中    select --->  位图 
+		*  @param  para			:  反应堆的存储回话的指针   
+		**/
 		void	register_read_descriptor(socket_type& descriptor, void* para) { _register_descriptor(descriptor, E_READFDS, para); }
 		void	register_write_descriptor(socket_type& descriptor, void* para) { _register_descriptor(descriptor, E_WRITFDS, para); }
 		void	register_readwrite_descriptor(socket_type& descriptor, void* para) { _register_descriptor(descriptor, E_READFDS | E_WRITFDS, para); }
 		// remove file
+		/**
+		*   注销 文件描述符
+		*   @param  descriptor		: 文件描述符
+		**/
 		void deregister_descriptor(socket_type& descriptor);
 		/*void shutdown();*/
 	public:
@@ -68,14 +76,14 @@ namespace chen {
 		//cnoncopyable &operator =(cnoncopyable &&);
 		cselect_reactor& operator=(const cselect_reactor&);
 	private:
-		socket_type 				m_maxfd;
-		uint32						m_curfd_count;
-		uint32						m_maxfd_count;
-		fd_set						m_readfds; // read
-		fd_set						m_writefds;
-		fd_set						m_excefds;//exceptfds
-		csocket_exter_para*			m_paras;
-		csocket_active_para*		m_active_paras;
+		socket_type 				m_maxfd;         // 最大的监听数 listen
+		uint32						m_curfd_count;  //当前连接数
+		uint32						m_maxfd_count;  // 最大连接数据
+		fd_set						m_readfds; // read   集合
+		fd_set						m_writefds;  // write 集合
+		fd_set						m_excefds;//exceptfds  集合
+		csocket_exter_para*			m_paras;      // 事件数组
+		csocket_active_para*		m_active_paras;  //反应堆数组
 	};
 
 } // namespace chen

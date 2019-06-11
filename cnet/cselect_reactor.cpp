@@ -191,7 +191,7 @@ namespace chen {
 		//SYSTEM_LOG("numevent = start");
 		// 后期优化 write 文件集合 使用 IO使用两个线程  select 使用一个线程 阻塞在select上和epoll_wait 还有一个线程专门读取和写入的操作
 		int32 numevent = csocket_ops::select(m_maxfd + 1, &readfds,  &writefds, &excefds, (const timeval *)&time_out);
-		//SYSTEM_LOG("numevent  = %ld - end", numevent);
+		//SYSTEM_LOG("numevent  = %d - end", numevent);
 		if (numevent > 0)
 		{
 			//ERROR_EX_LOG("numevent  = %ld , m_curfd_count = %ld", numevent, m_curfd_count);

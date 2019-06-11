@@ -34,6 +34,10 @@ namespace chen  {
 		explicit cnet_session(cnet_mgr&  _ptr, uint32 session_id);
 		virtual ~cnet_session();
 	public:
+		/**
+		* @param   send_buff_size : 发送缓冲区的大小
+		* @param   recv_buff_size : 接收缓冲区的大小
+		**/
 		bool 	init(uint32 send_buff_size, uint32 recv_buff_size);
 		void 	destroy();
 	public:
@@ -42,13 +46,24 @@ namespace chen  {
 		bool	is_close() const { return m_status == ESS_CLOSE; }
 
 	public:
+		// 读取数据
 		bool	processinputs();
+		//发送缓冲区中数据
 		bool	processoutputs();
 	private:
+		/**
+		*  @param  socket_status : 一个信息包的 发送状态  1. new client   2. 接收数据  3.  关闭连接信息包
+		**/
 		cnet_msg*  _next_new_net_msg(uint32 socket_status );
 		//void *		_next_new_msg_ptr();
 	public:
+		/**
+		* 发送数据包缓存到发送缓冲区中
+		* @param   p	: 发送数据包
+		* @param   size	: 发送数据包的大小
+		**/
 		bool		send_data(const void *p, uint32 size);
+		
 		void		clearup();
 		void		set_connect(socket_type sockfd);
 		socket_type &get_sockfd() { return m_sockfd; };
