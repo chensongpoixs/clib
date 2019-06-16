@@ -12,22 +12,33 @@
 #include "cnoncopyable.h"
 #include "cnet_types.h"
 #include "cnet_session.h"
+#include "cfd_set_adapter.h"
 #include <set>
 #include <vector>
 #if defined(_MSC_VER)
+
+
 namespace chen {
 	class cselect_reactor /*:private cnoncopyable*/
 	{
 	private:
+
+		enum op_types {
+			read_op = 0, write_op = 1, except_op = 2,
+			max_select_ops = 3, connect_op = 3, max_ops = 4
+		};
+
 		struct csocket_exter_para
 		{
 			socket_type		socket;
 			void*			ptr;
-			csocket_exter_para() : socket(INVALID_SOCKET), ptr(NULL) {}
+			int32			index;
+			csocket_exter_para() : socket(INVALID_SOCKET), ptr(NULL), index(0){}
 			void reset()
 			{
 				socket = INVALID_SOCKET;
 				ptr = NULL;
+				index = 0;
 			}
 		};
 		struct csocket_active_para
@@ -37,7 +48,7 @@ namespace chen {
 		};
 
 	public:
-		explicit cselect_reactor() {}
+		explicit cselect_reactor();
 		~cselect_reactor() {}
 	public:
 		
@@ -73,15 +84,13 @@ namespace chen {
 		int32 _register_descriptor(socket_type& descriptor, uint32 st, void * session);
 	private:
 		cselect_reactor(const cselect_reactor&);
-		//cnoncopyable &operator =(cnoncopyable &&);
 		cselect_reactor& operator=(const cselect_reactor&);
 	private:
 		socket_type 				m_maxfd;         // 最大的监听数 listen
 		uint32						m_curfd_count;  //当前连接数
 		uint32						m_maxfd_count;  // 最大连接数据
-		fd_set						m_readfds; // read   集合
-		fd_set						m_writefds;  // write 集合
-		fd_set						m_excefds;//exceptfds  集合
+		cfd_set_adapter				m_fd_set_adapter[max_select_ops];
+		cfd_set_adapter				m_active_fd_set_adapter[max_select_ops];
 		csocket_exter_para*			m_paras;      // 事件数组
 		csocket_active_para*		m_active_paras;  //反应堆数组
 	};
