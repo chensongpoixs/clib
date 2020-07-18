@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="casync_log.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="cacceptor.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="ccmd_param.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="cconfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="cdigit2str.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="cepoll_reactor.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cfd_set_adapter.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="chttp_client.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="chttp_session.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="chttp_request_helper.cpp">
+      <Filter>http</Filter>
+    </ClCompile>
+    <ClCompile Include="ckqueue_reactor.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="clog.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="clog_color.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="cmem_pool.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_mgr.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_msg.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_msg_queue.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_msg_statistic.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_session.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cnet_types.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="crandom.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="csafe_queue.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="cselect_reactor.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="csocket_ops.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cstr2digit.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="ctime_api.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="ctimer.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="cmsg_buffer.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="creactive_socket_accept.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="creactive_socket_connect.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="creactive_socket_recv.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="creactive_socket_send.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="cwinapi_thread.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="cposix_thread.cpp">
+      <Filter>thread</Filter>
+    </ClCompile>
+    <ClCompile Include="cposix_event.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="cstd_event.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="cwin_event.cpp">
+      <Filter>event</Filter>
+    </ClCompile>
+    <ClCompile Include="cposix_mutex.cpp">
+      <Filter>mutex</Filter>
+    </ClCompile>
+    <ClCompile Include="cstd_mutex.cpp">
+      <Filter>mutex</Filter>
+    </ClCompile>
+    <ClCompile Include="cwin_mutex.cpp">
+      <Filter>mutex</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="casync_log.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="cacceptor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="ccmd_param.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cconfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="ccycle_queue.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cdigit2str.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cepoll_reactor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cfd_set_adapter.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="chttp_client.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="chttp_request_helper.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="chttp_session.h">
+      <Filter>http</Filter>
+    </ClInclude>
+    <ClInclude Include="ckqueue_reactor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="clib_util.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="clog.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="clog_color.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="clog_define.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="cmem_pool.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_mgr.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_define.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_msg.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_msg_header.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_msg_queue.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_msg_reserve.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_msg_statistic.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_session.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet_types.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cnoncopyable.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cobject_pool.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cqueue.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="crandom.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="creactor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="csafe_cycle_queue.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="csafe_queue.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cscoped_ptr.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cscoped_lock.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cselect_reactor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="csingleton.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="csocket_ops.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="cstr2digit.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="ctime_api.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="ctime_const.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="ctime_elapse.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="ctimer.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cmsg_buffer.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="creactive_socket_accept.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="creactive_socket_connect.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="creactive_socket_recv.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="creactive_socket_send.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="chandler_type.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="chandler_type_requirements.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="cthread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="cwinapi_thread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="cposix_thread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="cstd_thread.h">
+      <Filter>thread</Filter>
+    </ClInclude>
+    <ClInclude Include="cevent.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="cposix_event.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="cstd_event.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="cwin_event.h">
+      <Filter>event</Filter>
+    </ClInclude>
+    <ClInclude Include="cmutex.h">
+      <Filter>mutex</Filter>
+    </ClInclude>
+    <ClInclude Include="cposix_mutex.h">
+      <Filter>mutex</Filter>
+    </ClInclude>
+    <ClInclude Include="cstd_mutex.h">
+      <Filter>mutex</Filter>
+    </ClInclude>
+    <ClInclude Include="cwin_mutex.h">
+      <Filter>mutex</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="net">
+      <UniqueIdentifier>{01099213-9719-4e17-ba61-2195c7630061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{3f32001f-a656-47d3-8923-2473dbc52107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{56c90370-c90a-4dd7-8b92-14e8744c8fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{e4e7ccbe-1417-473a-b13f-1b0619ef473d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="http">
+      <UniqueIdentifier>{b1d1d1f5-248d-4d92-b8af-a7555403e717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="time">
+      <UniqueIdentifier>{7af3fed7-3dad-48d9-ae8b-506ce5a53b53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thread">
+      <UniqueIdentifier>{7090ba0e-5b81-4892-9832-0bf0b67d3234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="event">
+      <UniqueIdentifier>{a42498f4-70d5-4767-9635-c03326414365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mutex">
+      <UniqueIdentifier>{bc0d143d-ab0a-4e45-84e7-dfe2c9728d8d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

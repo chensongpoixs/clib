@@ -1,0 +1,117 @@
+/***********************************************************************************************
+				created: 		2019-03-01
+
+				author:			chensong
+
+				purpose:		net_types
+我可能会遇到很多的人，听他们讲好2多的故事，我来写成故事或编成歌，用我学来的各种乐器演奏它。
+然后还可能在一个国家遇到一个心仪我的姑娘，她可能会被我帅气的外表捕获，又会被我深邃的内涵吸引，在某个下雨的夜晚，她会全身淋透然后要在我狭小的住处换身上的湿衣服。
+3小时候后她告诉我她其实是这个国家的公主，她愿意向父皇求婚。我不得已告诉她我是穿越而来的男主角，我始终要回到自己的世界。
+然后我的身影慢慢消失，我看到她眼里的泪水，心里却没有任何痛苦，我才知道，原来我的心被丢掉了，我游历全世界的原因，就是要找回自己的本心。
+于是我开始有意寻找各种各样失去心的人，我变成一块砖头，一颗树，一滴水，一朵白云，去听大家为什么会失去自己的本心。
+我发现，刚出生的宝宝，本心还在，慢慢的，他们的本心就会消失，收到了各种黑暗之光的侵蚀。
+从一次争论，到嫉妒和悲愤，还有委屈和痛苦，我看到一只只无形的手，把他们的本心扯碎，蒙蔽，偷走，再也回不到主人都身边。
+我叫他本心猎手。他可能是和宇宙同在的级别 但是我并不害怕，我仔细回忆自己平淡的一生 寻找本心猎手的痕迹。
+沿着自己的回忆，一个个的场景忽闪而过，最后发现，我的本心，在我写代码的时候，会回来。
+安静，淡然，代码就是我的一切，写代码就是我本心回归的最好方式，我还没找到本心猎手，但我相信，顺着这个线索，我一定能顺藤摸瓜，把他揪出来。
+************************************************************************************************/
+#ifndef _C_NET_TYPES_H_
+#define _C_NET_TYPES_H_
+#include <cctype>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cerrno>
+#include <new>
+//#include <codecvt>
+#include <locale>
+#include <string>
+
+#if defined(_MSC_VER)
+
+	// win 
+#   include <windows.h>
+#include <WinSock2.h>
+# include <winsock2.h>
+# include <ws2tcpip.h>
+//#   pragma comment(lib, "ws2.lib")
+#   pragma comment(lib, "ws2_32.lib")
+#    pragma comment(lib, "mswsock.lib")
+
+#elif defined(__linux__) || defined(__APPLE__)
+
+	// unix
+	
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+#  include <sys/time.h>
+#  include <sys/select.h>
+# include <sys/socket.h>
+# include <sys/uio.h>
+# include <sys/un.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <netdb.h>
+# include <net/if.h>
+# include <limits.h>
+#include <unistd.h>
+#else
+#pragma error "unknow platform!!!"
+
+#endif
+namespace chen 
+{
+	typedef signed char		int8;
+	typedef unsigned char	uint8;
+
+	typedef signed short	int16;
+	typedef unsigned short	uint16;
+
+	typedef signed int		int32;
+	typedef unsigned int	uint32;
+
+#if defined(_MSC_VER)
+
+	typedef signed long long	int64;
+	typedef unsigned long long	uint64;
+
+#elif defined(__GNUC__)
+
+	typedef signed long		int64;
+	typedef unsigned long	uint64;
+#else
+#pragma error "unknow platform!!!"
+
+#endif
+}
+
+namespace chen
+{
+
+	enum CSOCKET_TYPE 
+	{
+		E_NONE		= 0x00,     /* No events registered. */
+		E_READFDS	= 0x01, /* Fire when descriptor is readable. */
+		E_WRITFDS	= 0x02,  /* Fire when descriptor is writable. */
+		E_EXCEFDS	= 0x04
+	};
+
+#if defined(_MSC_VER)
+#define FUNCTION __FUNCTION__
+	typedef SOCKET socket_type;
+
+#elif defined(__linux__) ||  defined(__APPLE__)
+#define FUNCTION __PRETTY_FUNCTION__
+
+	typedef int socket_type;
+	#define  INVALID_SOCKET  (-1)
+	#define		SOCKET_ERROR		(-1)
+#else
+#pragma error "unknow platform!!!"
+
+#endif
+	
+}  //namespace chen
+
+#endif // !_C_NET_TYPES_H_
