@@ -75,8 +75,13 @@ namespace chen
 			socket_type		get_event_descriptor(int32 index) {return m_active[index].data->fd;}*/
 			// register
 		void	register_read_descriptor(socket_type& descriptor, void* para) { _register_descriptor(descriptor, EPOLLIN, para); }
-		void	register_write_descriptor(socket_type &descriptor, void* para) { _register_descriptor(descriptor, EPOLLOUT, para); }
+		void	register_write_descriptor(socket_type &descriptor, void* para);
 		void	register_readwrite_descriptor(socket_type& descriptor, void* para) { _register_descriptor(descriptor, EPOLLIN | EPOLLOUT, para); }
+		/**
+		 * 移除 写文件描述符
+		 * @param descriptor
+		 */
+		void    deregiter_write_descriptor(socket_type& descriptor,  void* para);
 
 		void deregister_descriptor(socket_type &descriptor);
 	private:

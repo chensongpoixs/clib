@@ -212,6 +212,11 @@ namespace chen {
             WARNING_EX_LOG(" register descriptor failed");
             return 0;
         }
+        f (m_curfd_count > m_maxfd_count)
+		{
+			ERROR_EX_LOG("reach max fd count %lu", m_maxfd_count);
+			return -1;
+		}
         struct kevent ev[3];
 
         if (st & E_READFDS)
